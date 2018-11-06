@@ -26,7 +26,7 @@ module.exports = {
 
     // publicPath is a virtual directory automatically pointing to the path
     // that store all your output files
-    publicPath: "/build/"
+    publicPath: "/"
   },
 
   /*
@@ -35,13 +35,19 @@ module.exports = {
   // This set of options is picked up by webpack-dev-server
   // and can be used to change its behavior in various ways
   devServer: {
-    publicPath: "/build/",
+    publicPath: "/",
 
-    // Tell the server where to serve content from
-    // This is only necessary if you want to serve static files
+    // tell the server where to serve content from
+    // this is only necessary if you want to serve static files
     // devServer.publicPath will be used to determine where the bundles should be served from
     // and takes precedence.
-    contentBase: "dist"
+    contentBase: "dist",
+
+    // display error and warning in the browser with a transparent overlay
+    overlay: {
+      warnings: true,
+      errors: true
+    }
   },
 
   /*
@@ -60,6 +66,30 @@ module.exports = {
           // css-loader interprets @import and url() and resolves them
           {
             loader: "css-loader"
+          }
+        ]
+      },
+
+      {
+        test: /\.html$/,
+        use: [
+          // emit the HTML file as a separate file
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].html"
+            }
+          },
+          // extract HTML and CSS from the bundle
+          {
+            loader: "extract-loader"
+          },
+          // html-loader turn HTML code into a string
+          // and replace every src attribute with a require() call
+          // <p>Hello <img src="webpack.png" alt="Webpack"></p>
+          // "<p>Hello <img src=\"" + require("webpack.png") + "\\" alt=\"Webpack\"></p>"
+          {
+            loader: "html-loader"
           }
         ]
       }
