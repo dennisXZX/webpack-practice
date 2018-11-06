@@ -56,6 +56,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [
+          {
+            loader: "babel-loader"
+          }
+        ],
+        exclude: /node_modules/
+      },
+
+      {
         test: /\.css$/,
         // the processing order of the loaders is from bottom to top
         use: [

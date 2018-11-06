@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
     "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
@@ -13,7 +14,10 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0"
+  },
   "scripts": {
     "start": "webpack-dev-server --config=config/webpack.dev.js",
     "build": "webpack --config=config/webpack.dev.js"
