@@ -1,1 +1,3 @@
-alert('hello world')
+require('./main.css')
+
+console.log('webpack successfully built!')
