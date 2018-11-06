@@ -6,7 +6,9 @@ module.exports = {
   */
   entry: {
     // an array of multiple entry points
-    main: ["./src/main.js"]
+    // "@babel/polyfill" fill up the missing features in old browsers
+    // but you can select just the features you need (like Promise) to reduce bundle size
+    main: ["core-js/fn/promise", "./src/main.js"]
   },
 
   // specify the mode, development | production
@@ -110,6 +112,7 @@ module.exports = {
       {
         test: /\.(jpg|gif|png)$/,
         use: [
+          // extract images to separate files
           {
             loader: "file-loader",
             options: {
