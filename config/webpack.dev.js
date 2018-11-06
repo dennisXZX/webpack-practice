@@ -89,7 +89,22 @@ module.exports = {
           // <p>Hello <img src="webpack.png" alt="Webpack"></p>
           // "<p>Hello <img src=\"" + require("webpack.png") + "\\" alt=\"Webpack\"></p>"
           {
-            loader: "html-loader"
+            loader: "html-loader",
+            options: {
+              attrs: ["img:src"]
+            }
+          }
+        ]
+      },
+
+      {
+        test: /\.(jpg|gif|png)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "images/[name].[ext]"
+            }
           }
         ]
       }

@@ -3,13 +3,22 @@ body {
     background-color: #444;
 }
 
-h1 {
-    color: white;
+.profile {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: white;
     font-size: 5em;
     font-family: sans-serif;
     text-shadow: 0 0 20px black;
+    margin: 10px 0;
+}
+
+img {
+    width: 300px;
 }
