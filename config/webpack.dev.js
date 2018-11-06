@@ -5,13 +5,14 @@ module.exports = {
     entry setting
   */
   entry: {
-    // an array of multiple entry points
-    // "@babel/polyfill" fill up the missing features in old browsers
-    // but you can select just the features you need (like Promise) to reduce bundle size
+    // use an array to specify multiple entry points
+    // "@babel/polyfill" fill up the missing features in older browsers
+    // but you can select just the features you need (like Promise in this example)
+    // to reduce bundle size
     main: ["core-js/fn/promise", "./src/main.js"]
   },
 
-  // specify the mode, development | production
+  // specify the mode, 'development' or 'production'
   mode: "development",
 
   /*
@@ -23,19 +24,18 @@ module.exports = {
 
     // The given sequence of paths is processed from right to left
     // with each subsequent path prepended until an absolute path is constructed
+    // __dirname is provided by Node.js and refers to the path of the current file
     // path property specifies the local disk directory to store all your output files
     path: path.resolve(__dirname, '../dist'),
 
-    // publicPath is a virtual directory automatically pointing to the path
-    // that store all your output files
+    // publicPath is a virtual directory automatically pointing to the root path
+    // that stores all your output files
     publicPath: "/"
   },
 
   /*
     webpack-dev-server setting
   */
-  // This set of options is picked up by webpack-dev-server
-  // and can be used to change its behavior in various ways
   devServer: {
     publicPath: "/",
 
@@ -57,6 +57,8 @@ module.exports = {
   */
   module: {
     rules: [
+      /* start of loaders */
+
       {
         test: /\.js$/,
         use: [
@@ -121,6 +123,8 @@ module.exports = {
           }
         ]
       }
+
+      /* end of loaders */
     ]
   }
 }
