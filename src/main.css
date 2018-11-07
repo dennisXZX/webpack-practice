@@ -22,3 +22,17 @@ h1 {
 img {
     width: 300px;
 }
+
+.count {
+    cursor: pointer;
+    font-size: 2em;
+    text-align: center;
+    color: black;
+    padding: 10px 0;
+    border-radius: 15px;
+    background-color: antiquewhite;
+}
+
+.count:hover {
+    background-color: #fae58c;
+}
