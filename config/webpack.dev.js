@@ -1,4 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   /*
@@ -45,6 +47,9 @@ module.exports = {
     // and takes precedence.
     contentBase: "dist",
 
+    // enable hot reloading
+    hot: true,
+
     // display error and warning in the browser with a transparent overlay
     overlay: {
       warnings: true,
@@ -87,17 +92,6 @@ module.exports = {
       {
         test: /\.html$/,
         use: [
-          // emit the HTML file as a separate file
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].html"
-            }
-          },
-          // extract HTML and CSS from the bundle
-          {
-            loader: "extract-loader"
-          },
           // html-loader turn HTML code into a string
           // and replace every src attribute with a require() call
           // <p>Hello <img src="webpack.png" alt="Webpack"></p>
@@ -126,5 +120,12 @@ module.exports = {
 
       /* end of loaders */
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HTMLWebpackPlugin({
+      template: "./src/index.html"
+    })
+  ]
 }
